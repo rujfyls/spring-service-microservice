@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-service
+spec:
+  selector:
+    matchLabels:
+      app: admin-service
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: admin-service
+    spec:
+      containers:
+        - name: admin-service
+          image: rujfyls/admin-service:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: spring.boot.admin.context-path
+              value: /admin-service

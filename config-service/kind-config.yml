@@ -1,0 +1,28 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  kubeadmConfigPatches:
+  - |
+    kind: InitConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        node-labels: "ingress-ready=true"
+  extraPortMappings:
+  - containerPort: 80
+    hostPort: 8888
+    protocol: TCP
+- role: worker
+- role: worker
+- role: worker
+
+#  kubectl version --client
+#  kind delete cluster
+#  kind create cluster --config kind-config.yml
+#  kubectl apply -f k8s/deployment.yml применение  этой конфигурации
+#  kubectl apply -f k8s/service.yml применение  этой конфигурации
+#  kubectl apply -f k8s/ingress.yml применение  этой конфигурации
+#  kubectl get pods -w(или --watch) перехватится консоль и мы будем следить в реальном времени за нашими подами
+#  kubectl delete pods --all
+#  kubectl delete deployments --all
+#  kubectl port-forward user-service-6764664968-j85xw 8899:8080 пробросить порт и можно проверить на нашем браузере через 8899

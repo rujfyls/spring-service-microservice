@@ -1,0 +1,14 @@
+version: '3.1'
+services:
+  db-users:
+    image: postgres:latest #с hub.docker.com, имя = "postgres"
+    ports:
+      - 5442:5432  #порт с которым работаем : порт, который слушает постгресс
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: users_db
+
+# docker compose -f compose-environment up
+# docker rm -f (docker ps | grep 5442)

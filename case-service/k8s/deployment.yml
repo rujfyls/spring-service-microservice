@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: case-service
+spec:
+  selector:
+    matchLabels:
+      app: case-service
+  replicas: 3 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: case-service
+    spec:
+      containers:
+        - name: case-service
+          image: rujfyls/case-service:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: spring.mvc.servlet.path
+              value: /case-service
+            - name: SPRING_ADMIN
+              value: http://admin-service/admin-service

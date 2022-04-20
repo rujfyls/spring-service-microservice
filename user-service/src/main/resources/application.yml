@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:postgresql://${DATASOURCE_HOST:localhost}:5442/users_db
+    username: admin
+    password: admin
+
+  boot:
+    admin:
+      client:
+        instance:
+          prefer-ip: true
+        url: ${SPRING_ADMIN:http://localhost:8080/}
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+url:
+  case-service: http://localhost:8888/case-service/case/random
