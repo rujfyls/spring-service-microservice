@@ -18,7 +18,7 @@ public class UserResponseDTO implements Serializable {
     @JsonProperty("id")
     private Long userId;
 
-    @JsonProperty("username")
+    @JsonProperty("name")
     private String username;
 
     @JsonProperty("e_mail")
