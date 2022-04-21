@@ -52,7 +52,7 @@ __________________________________________________
 1. Запускаем БД в Docker -> _cd config-service_ -> _docker compose -f compose-environment up_
 2. Запускаем bat файл для создания image и выгрузки их в docker hub, sh будет готов позднее :)
 <br> _.\build_and_push_ALL_service.bat_
-3. Создание кластера -> _kind create cluster --config ./config-service/kind-config.yml_
+3. Создание кластера -> _kind create cluster --config kind-config.yml_
 <br> по завершению -> _cd .._
 4. Установите Ingress, реализации от NGINX
 5. Применяем готовые конфигурации:
